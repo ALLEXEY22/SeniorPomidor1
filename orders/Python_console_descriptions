@@ -1,0 +1,44 @@
+
+Мини-курс Django, Часть 4: Models Модели 11.37 мин
+
+>>> from orders.models import SalesOrder
+>>> SalesOrder.objects.all()
+<QuerySet [<SalesOrder: SalesOrder object (1)>]>
+>>> order = SalesOrder.objects.all()[0]
+>>> order.amount
+25
+>>> order.description
+'Book'
+>>>
+
+Мини-курс Django, Часть 5: Model Relations
+
+$ ./manage.py shell
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from orders.models import SalesOrder
+>>> SalesOrder.objects.all()
+<QuerySet [<SalesOrder: SalesOrder object (1)>, <SalesOrder: SalesOrder object (2)>]>
+>>> order1, order2 = SalesOrder.objects.all()
+>>> order1.user
+>>> order2.user
+<User: first_user>
+>>> exit()
+
+Мини-курс Django, Часть 5: Model Relations
+
+Tom@User-PC MINGW64 /d/AK/PROG_TEST/Python/Projects/SeniorPomidor/SeniorPomidor1
+$ ./manage.py shell
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from orders.models import SalesOrder
+>>> order = SalesOrder.objects.all()[1]
+>>> order.products.all()
+<QuerySet [<Product: Product object (1)>, <Product: Product object (2)>]>
+>>> order.products.all()[0].name
+'Mobile Phone'
+>>> order.products.all()[1].name
+'NoteBook'
+>>>
